@@ -1,0 +1,12 @@
+- name: Install Apache web server
+  apt:
+    name: apache2
+    state: present
+  when: web_server == "apache"
+
+- name: Copy environment-specific configuration
+  template:
+    src: web.conf.j2
+    dest: /etc/apache2/sites-available/000-default.conf
+  notify: restart apache
+

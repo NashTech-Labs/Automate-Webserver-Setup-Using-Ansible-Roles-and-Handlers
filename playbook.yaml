@@ -1,0 +1,7 @@
+- hosts: demo
+  become: yes
+  roles:
+    - role: webserver
+      vars_files:
+        - "webserver/vars/{{ env }}.yml"
+
